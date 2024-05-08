@@ -1,0 +1,61 @@
+[gd_scene load_steps=8 format=3 uid="uid://d1goble8xj7wr"]
+
+[ext_resource type="Script" path="res://main.gd" id="1_8nh4p"]
+[ext_resource type="PackedScene" uid="uid://u77r32vx15ai" path="res://parallax_background.tscn" id="2_rbaa8"]
+[ext_resource type="AudioStream" uid="uid://curc60fwy4npa" path="res://music/Y2meta.app - Undertale OST_ 054 - Hotel (128 kbps).mp3" id="3_34jta"]
+[ext_resource type="FontFile" uid="uid://xwkrupltlefh" path="res://text fonts/SuperMario256.ttf" id="4_lusp4"]
+[ext_resource type="Texture2D" uid="uid://ci4hqtv8evo8i" path="res://images/pixil-frame-0.png" id="5_eus58"]
+[ext_resource type="Texture2D" uid="uid://bv2832bmqspn5" path="res://images/pixil-frame-0 (1).png" id="6_adw4q"]
+[ext_resource type="Texture2D" uid="uid://dlsleq5pshowd" path="res://images/pixil-frame-0 (2).png" id="7_5kdkr"]
+
+[node name="main" type="Node2D"]
+script = ExtResource("1_8nh4p")
+
+[node name="ParallaxBackground" parent="." instance=ExtResource("2_rbaa8")]
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_34jta")
+autoplay = true
+
+[node name="Play" type="Button" parent="."]
+modulate = Color(1, 0, 0, 1)
+offset_left = 1314.0
+offset_top = 756.0
+offset_right = 1584.0
+offset_bottom = 857.0
+scale = Vector2(1.36, 1.36)
+theme_override_fonts/font = ExtResource("4_lusp4")
+theme_override_font_sizes/font_size = 71
+text = "PLAY"
+metadata/_edit_use_anchors_ = true
+
+[node name="Play2" type="Button" parent="."]
+modulate = Color(1, 0, 0, 1)
+offset_left = 278.0
+offset_top = 746.0
+offset_right = 548.0
+offset_bottom = 847.0
+scale = Vector2(1.36, 1.36)
+theme_override_fonts/font = ExtResource("4_lusp4")
+theme_override_font_sizes/font_size = 71
+text = "PLAY"
+metadata/_edit_use_anchors_ = true
+
+[node name="Pixil-frame-0" type="Sprite2D" parent="."]
+position = Vector2(965, 322)
+scale = Vector2(8.85725, 10.3344)
+texture = ExtResource("5_eus58")
+
+[node name="Pixil-frame-0(1)" type="Sprite2D" parent="."]
+position = Vector2(459, 607)
+scale = Vector2(4.6, 4.64)
+texture = ExtResource("6_adw4q")
+
+[node name="Pixil-frame-0(2)" type="Sprite2D" parent="."]
+position = Vector2(1505, 617)
+scale = Vector2(5.47, 4.89)
+texture = ExtResource("7_5kdkr")
+
+[connection signal="finished" from="AudioStreamPlayer2D" to="." method="_on_audio_stream_player_2d_finished"]
+[connection signal="pressed" from="Play" to="." method="_on_play_pressed"]
+[connection signal="pressed" from="Play2" to="." method="_on_play_2_pressed"]
