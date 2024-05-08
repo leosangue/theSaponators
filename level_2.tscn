@@ -1,0 +1,86 @@
+[gd_scene load_steps=7 format=3 uid="uid://nytnx8tyf1ly"]
+
+[ext_resource type="Texture2D" uid="uid://clgr2xjlhkoem" path="res://images/pixel-art-rural-landscape-background_52683-125366.png" id="1_46xb6"]
+[ext_resource type="Script" path="res://level1.gd" id="1_tj014"]
+[ext_resource type="Texture2D" uid="uid://dydkj88mtewr6" path="res://images/sbbs-barsoap_openangled-removebg-preview.png" id="2_yqpup"]
+[ext_resource type="Script" path="res://Player.gd" id="3_jo6gh"]
+[ext_resource type="FontFile" uid="uid://xwkrupltlefh" path="res://text fonts/SuperMario256.ttf" id="3_lm1rb"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_r8ojn"]
+size = Vector2(102, 62)
+
+[node name="level1" type="Node2D"]
+script = ExtResource("1_tj014")
+
+[node name="Pixel-art-rural-landscape-background52683-125366" type="Sprite2D" parent="."]
+position = Vector2(964.5, 538.25)
+scale = Vector2(3.10064, 2.58873)
+texture = ExtResource("1_46xb6")
+
+[node name="Player" type="CharacterBody2D" parent="."]
+script = ExtResource("3_jo6gh")
+
+[node name="Sbbs-barsoapOpenangled-removebg-preview" type="Sprite2D" parent="Player"]
+position = Vector2(938, 559)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("2_yqpup")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
+position = Vector2(938, 558)
+shape = SubResource("RectangleShape2D_r8ojn")
+
+[node name="Timer" type="Timer" parent="."]
+autostart = true
+
+[node name="Time" type="Label" parent="."]
+offset_left = 3.0
+offset_top = 97.0
+offset_right = 164.0
+offset_bottom = 216.0
+theme_override_fonts/font = ExtResource("3_lm1rb")
+theme_override_font_sizes/font_size = 86
+text = "15"
+
+[node name="HP" type="Label" parent="."]
+offset_top = 6.0
+offset_right = 224.0
+offset_bottom = 123.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 71
+text = "HP: "
+
+[node name="Timer2" type="Timer" parent="."]
+wait_time = 15.0
+autostart = true
+
+[node name="Level" type="Label" parent="."]
+modulate = Color(1, 0, 0, 1)
+offset_left = 588.0
+offset_top = 470.0
+offset_right = 1329.0
+offset_bottom = 637.0
+theme_override_fonts/font = ExtResource("3_lm1rb")
+theme_override_font_sizes/font_size = 166
+text = "Level 1"
+
+[node name="You lost" type="Label" parent="."]
+modulate = Color(1, 0, 0, 1)
+offset_left = 588.0
+offset_top = 470.0
+offset_right = 1329.0
+offset_bottom = 637.0
+theme_override_fonts/font = ExtResource("3_lm1rb")
+theme_override_font_sizes/font_size = 166
+text = "You Lost!"
+
+[node name="Score" type="Label" parent="."]
+offset_left = 1607.0
+offset_top = 11.0
+offset_right = 1902.0
+offset_bottom = 108.0
+theme_override_fonts/font = ExtResource("3_lm1rb")
+theme_override_font_sizes/font_size = 41
+text = "100"
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="Timer2" to="." method="_on_timer_2_timeout"]
